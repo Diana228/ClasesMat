@@ -9,10 +9,10 @@ class matrices {
 
       public:
         int getMatrix(int param1, int param2);// Member functions declaration
-        int showMatrix(int param1, int param2);
+        int showMatrix(int i, int j);
         int AddMatrix(int param1, int param2);
         int diffMatrix(int param1, int param2);
-        //void addition();
+
       private:
 
         int **mat1;
@@ -23,13 +23,10 @@ class matrices {
 int matrices::getMatrix(int param1, int param2)
 {
     //int mat1[arg1][arg2],mat2[arg1][arg2];
-
-
         mat1 = new int * [param1];
                       for (int i = 0; i < param1; i++) {
                 mat1[i] = new int [param2];
             }
-
 
         mat2 = new int * [param1];
 
@@ -37,32 +34,32 @@ int matrices::getMatrix(int param1, int param2)
                 mat2[i] = new int [param2];
             }
 
-
-
-        cout << "--------------Matriz 1--------------" << endl;
+        cout << "Por favor ingresar los elementos de la Matriz 1: " << endl;
 
         for (int i = 0; i < param1; ++i) {
             for (int j = 0; j < param2; ++j) {
-                cout << "Ingrese el elemento mat1[" << i << "," << j << "]: ";
-                cin >> mat1[i][j];
+
+                 cout << "Mat1[" << i << "," << j << "]: ";
+                 cin >> mat1[i][j];
             }
+            cout << "\n";
         }
 
-        cout << "--------------Matriz 2--------------" << endl;
+        cout << "Por favor ingresar los elementos de la Matriz 2: " << endl;
 
         for (int i = 0; i < param1; ++i) {
             for (int j = 0; j < param2; ++j) {
-                cout << "Ingrese el elemento mat2[" << i << "," << j << "]: ";
+
+                cout << "Mat2[" << i << "," << j << "]: ";
                 cin >> mat2[i][j];
             }
+            cout << "\n";
         }
 }
-int matrices::showMatrix(int param1, int param2)
+int matrices::showMatrix(int param1,int param2)
 {
-
-     for ( int i = 0; i < param1; i++ ){
+    for ( int i = 0; i < param1; i++ ){
       for ( int j = 0; j < param2; j++ ) {
-         //cout << "mat3[" << i << "][" << j << "]: ";
          cout << mat3[i][j]<<" ";
       }
       cout << "\n";
@@ -76,7 +73,7 @@ int matrices::AddMatrix(int param1,int param2)
                       for (int i = 0; i < param1; i++) {
                 mat3[i] = new int [param2];
             }
-    cout << "El resultado de la suma de las matrices 1 y 2 es: "<<"\n";
+    cout << "Mat1 + Mat2 = "<<"\n";
 
 			for(int i = 0; i < param1; i++) {
 				for (int j = 0; j < param2; j++) {
@@ -92,7 +89,7 @@ int matrices::diffMatrix(int param1,int param2)
                 mat3[i] = new int [param2];
             }
 
-    cout << "El resultado de la resta de las matrices 1 y 2 es: "<<"\n";
+    cout << "Mat1 - Mat2 = "<<"\n";
 
 			for(int i = 0; i < param1; i++) {
 				for (int j = 0; j < param2; j++) {
