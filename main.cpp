@@ -10,10 +10,13 @@ class matrices {
       public:
         int getMatrix(int param1, int param2);// Member functions declaration
         int showMatrix(int i, int j);
+        int showMatrixtras(int i, int j);
         int AddMatrix(int param1, int param2);
         int diffMatrix(int param1, int param2);
         int MultMatrix(int param1, int param2);
-        
+        int traspuesta(int param1,int param2);
+
+
 
       private:
 
@@ -60,6 +63,7 @@ int matrices::getMatrix(int param1, int param2)
             cout << "\n";
         }
 }
+
 int matrices::showMatrix(int param1,int param2)
 {
     for ( int i = 0; i < param1; i++ ){
@@ -70,6 +74,8 @@ int matrices::showMatrix(int param1,int param2)
     }
 
 }
+
+
 
 int matrices::AddMatrix(int param1,int param2)
 {
@@ -101,53 +107,93 @@ int matrices::diffMatrix(int param1,int param2)
 				}
      }
 }
-
+/*
 int matrices::MultMatrix(int param1, int param2)
 {
+
     mat4 = new int * [param2];  //saco el espacio de memoria para mat4, que es donde guardo la tranpuesta de mat2
     for (int i = 0; i < param2; i++){
         mat4[i] = new int [param1];
     }
-                      
-    mat5 = new int * [param2]; //saco el espacio de men¿moria para guardar el resultado de multiplicacion que es de tamaño COL*COL
-    for (int i = 0; i < param2; i++){ 
-        mat4[i] = new int [param2];
+
+    mat5 = new int * [param1]; //saco el espacio de memoria para guardar el resultado de multiplicacion que es de tamaño COL*COL
+    for (int i = 0; i < param1; i++){
+        mat5[i] = new int [param2];
     }
 
     if (param1 != param2){  //La condición es porque solo se transppne si la matriz en rectangular, en caso de que sea cuadrada con el else             se pasa de una a la multiplicación
-        
+
+
         ////transponer mat2
         for (int i = 0;i < param1; i++){
             for (int j=0; j < param2; i++){
                 mat4[j][i] = mat2[i][j];
             }
         }
-         
-            }
+
+
         cout << "La matriz transpuesta es: " << endl;
 
-        ///Multiplicar
         for (int i = 0; i < param2; ++i) {
             for (int j = 0; j < param2; ++j) {
                 for (int k = 0; k < param2; ++k)
                 {
                     mat5[i][j] += mat1[i][k]*mat4[k][j];
                 }
-        
-    
-    else {
-        //Multiplicación
-        for (int i = 0; i < param2; ++i) {
+            }
+        }
+
+    }else {
+
+        cout << "Mat1*Mat2 = "<<"\n";
+        for (int i = 0; i < param1; ++i) {
             for (int j = 0; j < param2; ++j) {
-                for (int k = 0; k < param2; ++k)
-                {
-                    mat5[i][j] += mat1[i][k]*mat4[k][j];
+                for (int k = 0; k < param2; ++k){
+                    mat5[i][j] += mat1[i][k]*mat2[k][j];
                 }
-        
+            }
+        }
     }
+}
+*/
+int matrices::MultMatrix(int param1,int param2)
+{
+       cout << "Mat1*Mat2 = "<<"\n";
+        for (int i = 0; i < param1; ++i) {
+            for (int j = 0; j < param2; ++j) {
+                for (int k = 0; k < param2; ++k){
+                    mat3[i][j] += mat1[i][k]*mat2[k][j];
+                }
+            }
+        }
+}
+
+int matrices::traspuesta(int param1,int param2)
+{
+     mat4 = new int * [param2];  //saco el espacio de memoria para mat4, que es donde guardo la tranpuesta de mat2
+     for (int j = 0; j < param2; j++){
+        mat4[j] = new int [param1];
+     }
+
+
+        for (int i = 0;i < param1; i++){
+            for (int j = 0; j < param2; i++){
+                mat4[j][i] = mat2[i][j];
+            }
+        }
 
 }
 
+/*int matrices::showMatrixtras(int param1,int param2)
+{
+    for ( int i = 0; i < param1; i++ ){
+      for ( int j = 0; j < param2; j++ ) {
+         cout << mat4[i][j]<<" ";
+      }
+      cout << "\n";
+    }
+
+}*/
 
 int main() {
    matrices op;        // Declare objects of a class.
@@ -157,12 +203,14 @@ int main() {
    cout << "Introduzca un numero de columnas diferente de cero para construir las matrices a operar: ";
    cin >> col;
 
-   op.getMatrix(row, col);
+   op.getMatrix(row,col);
    op.AddMatrix(row,col);
    op.showMatrix(row,col);
    op.diffMatrix(row,col);
    op.showMatrix(row,col);
    op.MultMatrix(row,col);
    op.showMatrix(row,col); //Se debe modificar el show para que muestre la matriz transpuesta
+   op.traspuesta(row,col);
+   //op.showMatrixtras(row,col);
 }
 
