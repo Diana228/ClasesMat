@@ -20,6 +20,7 @@ class matrices {
           int **mat2;
           int **mat3;
           int **mat4; //resultado Multiplicación
+          
 };
 
 int matrices::getMatrix(int param1, int param2)
@@ -93,11 +94,6 @@ int matrices::AddMatrix(int param1,int param2)
 
 int matrices::diffMatrix(int param1,int param2)
 {
-    mat3 = new int * [param1];
-    for (int i = 0; i < param1; i++) {
-        mat3[i] = new int [param2];
-        }
-
     cout << endl << "Mat1 - Mat2 = "<<"\n";
 
     for(int i = 0; i < param1; i++) {
@@ -116,12 +112,26 @@ int matrices::MultMatrix(int param1, int param2)
     
     cout << endl << "Mat1 * Mat2' = "<<"\n";
     
+    if (param1 != param2){
+    
     for (int i = 0; i < param1; ++i) {  //Multiplicar mat1 con mat4
         for (int j = 0; j < param1; ++j) {
             for (int k = 0; k < param2; ++k){
                 mat4[i][j] += mat1[i][k]*mat2[j][k];
             }
         }
+    }
+    }
+    
+    else {
+        for (int i = 0; i < param1; ++i) {  //Multiplicar mat1 con mat4
+        for (int j = 0; j < param1; ++j) {
+            for (int k = 0; k < param1; ++k){
+                mat4[i][j] += mat1[i][k]*mat2[k][j];
+            }
+        }
+    }
+        
     }
 }
     
@@ -142,5 +152,5 @@ int main()
    op.showMatrix(row,col,2);
    op.MultMatrix(row,col);
    op.showMatrix(row,col,3); //Se debe modificar el show para que muestre la matriz transpuesta
-   }
+}
 
