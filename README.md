@@ -31,8 +31,4 @@ Esta clase denominada matrices utilizada dentro de ella los siguientes objetos p
           int MultMatrix(int param1, int param2);
         
 
-%
-% Output:
-% The  function  will    return a column vector  representing
- the solution to each variable in order of appearance in the
-% given matrix.
+
